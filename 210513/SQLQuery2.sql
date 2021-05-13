@@ -58,17 +58,33 @@ SELECT groupName
   FROM buyTbl
  GROUP BY userID, groupName;
 
+ SELECT groupName
+     , userID
+     , SUM(price * amount) AS[ÃÑ ±¸¸Å ±Ý¾×]
+  FROM buyTbl
+ GROUP BY groupName, userID;
+
 SELECT groupName
      , userID
      , SUM(price * amount) AS[ÃÑ ±¸¸Å ±Ý¾×]
   FROM buyTbl
  GROUP BY ROLLUP(userID, groupName); --ROLLUP
 
+
+
 SELECT groupName
      , userID
      , SUM(price * amount) AS[ÃÑ ±¸¸Å ±Ý¾×]
   FROM buyTbl
  GROUP BY CUBE(groupName, userID);
+
+ SELECT groupName
+     , userID
+     , SUM(price * amount) AS[ÃÑ ±¸¸Å ±Ý¾×]
+  FROM buyTbl
+ GROUP BY CUBE(userID, groupName);
+
+
 
  SELECT groupName
      , SUM(price * amount) AS [ÃÑ ±¸¸Å ±Ý¾×]
